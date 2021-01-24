@@ -10,4 +10,4 @@
 
 本Repo使用方法, 切换到对应的branch查看. branch列表如下:
 
-- ft/basic-purchase
+- ft/basic-purchase 基本实现了购买需求,但是存在超卖现象
