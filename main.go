@@ -12,7 +12,11 @@ func setUpRouter() *gin.Engine {
 }
 
 func Purchase(c *gin.Context) {
-	TestStucker.Purchase()
+	if TestStucker.Purchase() {
+		c.JSON(200, "购买成功")
+	} else {
+		c.JSON(200, "购买失败")
+	}
 	//if TestStucker.Counter() > 0 {
 	//TestStucker.Purchase()
 	//}

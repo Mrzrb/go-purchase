@@ -66,7 +66,7 @@ var purchaseLua = redis.NewScript(`
 
 `)
 
-func (s *Stuck) Purchase() {
+func (s *Stuck) Purchase() bool {
 	//模拟数据库延迟
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -74,13 +74,14 @@ func (s *Stuck) Purchase() {
 
 	if err != nil {
 		log.Printf("err purchase %s", err.Error())
-		return
+		return false
 	}
 	succ, ok := res.(int64)
 	log.Println(succ, ok)
 	if ok && succ == 1 {
 		s.resultCh <- struct{}{}
 	}
+	return true
 }
 
 func (s *Stuck) Counter() int {
