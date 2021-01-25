@@ -17,9 +17,6 @@ func Purchase(c *gin.Context) {
 	} else {
 		c.JSON(200, "购买失败")
 	}
-	//if TestStucker.Counter() > 0 {
-	//TestStucker.Purchase()
-	//}
 }
 
 var TestStucker = NewStuck(3000)
